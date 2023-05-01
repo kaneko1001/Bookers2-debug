@@ -42,6 +42,12 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
+  def search
+    @books = Book.search(oarams[:keyword])
+    @keyword = params[:keyword]
+    render "index"
+  end
+
   private
 
   def book_params
